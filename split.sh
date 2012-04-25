@@ -13,7 +13,7 @@ CLONE_PATH=$(mktemp -d "$2/vcap.XXX")
 
 git clone $VCAP_REPO $CLONE_PATH
 cd $CLONE_PATH
-for c in common cloud_controller dea health_manager router staging stager; do
+for c in common cloud_controller dea health_manager router staging stager warden warden-client em-warden-client package_cache package_cache_client; do
 	git checkout --quiet origin/master
 	git checkout -b small_$c
 	git filter-branch -f --prune-empty --subdirectory-filter $c --index-filter "git rm --quiet --cached --ignore-unmatch -r -f vendor/cache"
