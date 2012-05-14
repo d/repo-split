@@ -10,7 +10,7 @@ fi
 VCAP_REPO=$1
 CLONE_BASE=$2
 CLONE_PATH=$(mktemp -d "$CLONE_BASE/vcap.XXX")
-SCRIPT_DIR=$(dirname $(readlink -nf $0))
+SCRIPT_DIR=$(cd $(dirname $0) && pwd)
 
 git clone $VCAP_REPO $CLONE_PATH
 cd $CLONE_PATH
